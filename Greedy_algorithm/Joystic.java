@@ -14,14 +14,10 @@ public class Joystick {
     public int[] check_distance(String name, int[] diffents) {
         int location = 0;
         int value = 0;
-        char[] alphabetSet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         int[] alphabetLocation = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-        for (location = 0; location < name.length(); location++) {
-            for(int i =0; i<alphabetSet.length; i++) {
-                if (alphabetSet[i] == name.charAt(location)) {
-                    diffents[location] = alphabetLocation[i];   //각 자리 알파벳의 차이로 움직여야하는 조이스틱 움직임 횟수가 저장
-                }
-            }
+        for(char c : name.toCharArray()){
+            diffents[location] = alphabetLocation[c-'A'];
+            location++;
         }
         return diffents;
     }
